@@ -1,0 +1,19 @@
+# 📁 Carpeta de dependencias (en caso de usar npm más adelante)
+node_modules/
+
+# 📁 Carpeta de compilación (por si más adelante generas dist/)
+dist/
+
+# ⚙️ Configuración local de Visual Studio Code
+.vscode/
+
+# 🖥️ Archivos de sistema (MacOS y Windows)
+.DS_Store
+Thumbs.db
+
+# 🧹 Logs de errores y depuración
+*.log
+
+# ⚡ Otros backups automáticos (por si tu editor crea)
+*.bak
+*.tmp

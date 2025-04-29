@@ -120,7 +120,7 @@ body {
   border-radius: 1rem;
 }
 
-/* PUBLICAR EMPLEO - FORMULARIO */
+/* FORMULARIO */
 
 .form-section {
   max-width: 600px;
@@ -253,13 +253,14 @@ body {
   margin: 0.6rem 0;
 }
 
-.card-empleo .boton-derecha {
-  margin-top: 0.8rem;
+.card-empleo .card-info .btn-primary.boton-derecha {
+    display: inline-block;
+    margin-top: 1rem;
 }
 
 .card-logo {
-  width: 80px;
-  height: 80px;
+  width: 150px;
+  height: 150px;
   border-radius: 10px;
   object-fit: cover;
 }

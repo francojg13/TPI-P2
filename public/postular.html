@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Postularme a una oferta - FamaJobs</title>
+  <link rel="stylesheet" href="../src/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">
+      <img src="../assets/images/logotipo.svg" alt="Logotipo" height="30">
+    </div>
+    <nav class="nav-menu">
+      <a href="index.html">Inicio</a>
+      <a href="empleos.html">Empleos</a>
+      <a href="publicar.html">Publicar</a>
+      <a href="postular.html">Postular</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="btn-link">Login</a>
+      <a href="#" class="btn-outline">Register</a>
+    </div>
+  </header>
+
+  <main class="form-section">
+    <h1>Postularme a una oferta</h1>
+    <form id="form-postulacion" class="form-box">
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" id="nombre" required />
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" required />
+
+      <label for="telefono">Teléfono:</label>
+      <input type="text" id="telefono" required />
+
+      <label for="cv">Link a tu CV (Google Drive, PDF, etc):</label>
+      <input type="url" id="cv" placeholder="https://..." required />
+
+      <label for="mensaje">Mensaje adicional:</label>
+      <textarea id="mensaje" rows="4"></textarea>
+
+      <button type="submit" class="btn-primary">Enviar Postulación</button>
+    </form>
+
+    <p id="mensaje-exito" class="oculto mensaje-exito">¡Tu postulación fue enviada!</p>
+  </main>
+
+  <script src="../src/js/postular.js"></script>
+</body>
+</html>

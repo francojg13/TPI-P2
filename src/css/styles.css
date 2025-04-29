@@ -1,19 +1,264 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-  }
-  
-  .container {
-    text-align: center;
-    padding: 50px;
-  }
-  
-  h1 {
-    color: #3498db;
-  }
-  
-  p {
-    color: #555;
-  }
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  background-color: #f9f9f9;
+  color: #2c3e50;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+  color: #3498db;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-actions a {
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.btn-link {
+  background-color: transparent;
+  color: #2c3e50;
+  border: 1px solid transparent;
+}
+
+.btn-link:hover {
+  background-color: #ecf0f1;
+}
+
+.btn-outline {
+  border: 1px solid #2c3e50;
+  color: #2c3e50;
+  background-color: transparent;
+}
+
+.btn-outline:hover {
+  background-color: #2c3e50;
+  color: white;
+}
+
+/* HERO SECTION */
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  gap: 2rem;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 500px;
+}
+
+.hero-text h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.btn-primary {
+  background-color: #2c3e50;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #34495e;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 1rem;
+}
+
+/* Publicar Empleo - formulario */
+.form-section {
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.form-section h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+.form-box {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-box label {
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+
+.form-box input,
+.form-box textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.mensaje-exito {
+  margin-top: 1rem;
+  text-align: center;
+  background-color: #dff0d8;
+  color: #3c763d;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.oculto {
+  display: none;
+}
+
+/* Empleos */
+.empleos-section {
+  max-width: 1100px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+}
+
+.empleos-section h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+.filtros {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.filtros input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 200px;
+}
+
+.empleos-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.card-empleo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  transition: box-shadow 0.3s;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.card-empleo:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.card-info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.card-empleo h2 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 0.2rem;
+}
+
+.card-empleo p {
+  margin: 0.2rem 0;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.card-empleo .empresa {
+  color: #2980b9;
+  font-weight: 500;
+}
+
+.card-empleo .detalles-linea {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.card-empleo .descripcion-corta {
+  font-size: 0.9rem;
+  color: #444;
+  margin: 0.6rem 0;
+}
+
+.card-empleo .boton-derecha {
+  margin-top: 0.8rem;
+}
+
+.card-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+

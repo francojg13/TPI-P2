@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publicar Empleo - FamaJobs</title>
+  <link rel="stylesheet" href="../src/css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Reutilizamos la misma navbar del index -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="assets/images/logotipo.svg" alt="Logotipo" height="30">
+    </div>
+    <nav class="nav-menu">
+      <a href="index.html">Inicio</a>
+      <a href="empleos.html">Empleos</a>
+      <a href="publicar.html">Publicar</a>
+      <a href="postular.html">Postular</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="btn-link">Login</a>
+      <a href="#" class="btn-outline">Register</a>
+    </div>
+  </header>
+
+  <main class="form-section">
+    <h1>Publicar nueva oferta laboral</h1>
+    <form id="form-publicar" class="form-box" enctype="multipart/form-data">
+        <label for="empresa">Nombre de la empresa:</label>
+        <input type="text" id="empresa" required />
+      
+        <label for="puesto">Puesto o título del empleo:</label>
+        <input type="text" id="puesto" required />
+      
+        <label for="rubro">Rubro o sector:</label>
+        <input type="text" id="rubro" required />
+      
+        <label for="ubicacion">Ciudad / Zona:</label>
+        <input type="text" id="ubicacion" required />
+      
+        <label for="descripcion">Descripción del puesto:</label>
+        <textarea id="descripcion" rows="5" required></textarea>
+      
+        <label for="fecha">Fecha de publicación:</label>
+        <input type="date" id="fecha" required />
+      
+        <label for="logo">Logo de la empresa (opcional):</label>
+        <input type="file" id="logo" accept="image/*" />
+      
+        <button type="submit" class="btn-primary">Publicar Oferta</button>
+      </form>
+      
+      <p id="mensaje-exito" class="oculto mensaje-exito">¡Oferta publicada correctamente!</p>
+      
+  </main>
+
+  <script src="../src/js/publicar.js"></script>
+</body>
+</html>

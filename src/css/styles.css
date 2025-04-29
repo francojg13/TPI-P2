@@ -120,7 +120,8 @@ body {
   border-radius: 1rem;
 }
 
-/* Publicar Empleo - formulario */
+/* PUBLICAR EMPLEO - FORMULARIO */
+
 .form-section {
   max-width: 600px;
   margin: 4rem auto;
@@ -168,7 +169,8 @@ body {
   display: none;
 }
 
-/* Empleos */
+/* EMPLEOS - LISTA DE EMPLEOS */
+
 .empleos-section {
   max-width: 1100px;
   margin: 4rem auto;

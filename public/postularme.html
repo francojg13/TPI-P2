@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contacto - FamaEmpleos</title>
+    <title>Postularme a una oferta - FamaEmpleos</title>
     <link rel="stylesheet" href="../src/css/styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
@@ -29,25 +29,31 @@
     </header>
 
     <main class="form-section">
-      <h1>Contacto</h1>
-      <form id="form-contacto" class="form-box">
-        <label for="nombre">Tu nombre:</label>
+      <h1>Postularme a una oferta</h1>
+      <form id="form-postulacion" class="form-box">
+        <label for="nombre">Nombre completo:</label>
         <input type="text" id="nombre" required />
 
-        <label for="email">Tu correo:</label>
+        <label for="email">Correo electrónico:</label>
         <input type="email" id="email" required />
 
-        <label for="mensaje">Mensaje:</label>
-        <textarea id="mensaje" rows="4" required></textarea>
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" required />
 
-        <button type="submit" class="btn-primary">Enviar mensaje</button>
+        <label for="cv">Link a tu CV (Google Drive, PDF, etc):</label>
+        <input type="url" id="cv" placeholder="https://..." required />
+
+        <label for="mensaje">Mensaje adicional:</label>
+        <textarea id="mensaje" rows="4"></textarea>
+
+        <button type="submit" class="btn-primary">Enviar Postulación</button>
       </form>
 
       <p id="mensaje-exito" class="oculto mensaje-exito">
-        ¡Gracias por contactarte!
+        ¡Tu postulación fue enviada!
       </p>
     </main>
 
-    <script src="../src/js/contacto.js"></script>
+    <script src="../src/js/postularme.js"></script>
   </body>
 </html>

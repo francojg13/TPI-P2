@@ -1,44 +1,54 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ofertas Laborales - FamaJobs</title>
-  <link rel="stylesheet" href="../src/css/styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ofertas Laborales - FamaEmpleos</title>
+    <link rel="stylesheet" href="../src/css/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">
+        <img src="../assets/images/logotipo.svg" alt="Logotipo" height="30" />
+      </div>
+      <nav class="nav-menu">
+        <a href="index.html">Inicio</a>
+        <a href="empleos.html">Empleos</a>
+        <a href="publicar.html">Publicar</a>
+        <a href="postularme.html">Postular</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="#" class="btn-link">Login</a>
+        <a href="#" class="btn-outline">Register</a>
+      </div>
+    </header>
 
-  <header class="navbar">
-    <div class="logo">
-      <img src="../assets/images/logotipo.svg" alt="Logotipo" height="30">
-    </div>
-    <nav class="nav-menu">
-      <a href="index.html">Inicio</a>
-      <a href="empleos.html">Empleos</a>
-      <a href="publicar.html">Publicar</a>
-      <a href="postular.html">Postular</a>
-      <a href="contacto.html">Contacto</a>
-    </nav>
-    <div class="nav-actions">
-      <a href="#" class="btn-link">Login</a>
-      <a href="#" class="btn-outline">Register</a>
-    </div>
-  </header>
+    <main class="empleos-section">
+      <h1>Ofertas Laborales</h1>
 
-  <main class="empleos-section">
-    <h1>Ofertas Laborales</h1>
+      <div class="filtros">
+        <input
+          type="text"
+          id="filtro-rubro"
+          placeholder="Filtrar por rubro..."
+        />
+        <input
+          type="text"
+          id="filtro-zona"
+          placeholder="Filtrar por ciudad/zona..."
+        />
+      </div>
 
-    <div class="filtros">
-      <input type="text" id="filtro-rubro" placeholder="Filtrar por rubro..." />
-      <input type="text" id="filtro-zona" placeholder="Filtrar por ciudad/zona..." />
-    </div>
+      <div id="lista-empleos" class="empleos-lista">
+        <!-- Las ofertas se cargarán aquí -->
+      </div>
+    </main>
 
-    <div id="lista-empleos" class="empleos-lista">
-      <!-- Las ofertas se cargarán aquí -->
-    </div>
-  </main>
-
-  <script src="../src/js/empleos.js"></script>
-</body>
+    <script src="../src/js/empleos.js"></script>
+  </body>
 </html>

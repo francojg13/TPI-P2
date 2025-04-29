@@ -1,4 +1,4 @@
-// Clase para manejar las postulaciones
+// Esta clase sirve para manejar las postulaciones
 class Postulacion {
   constructor(nombre, email, telefono, cv, mensaje) {
     this.id = Date.now();
@@ -10,7 +10,7 @@ class Postulacion {
     this.fecha = new Date().toLocaleDateString();
   }
 
-  // Método para validar los datos de la postulación
+  // Este método sirve para validar los datos de la postulación
   validar() {
     if (!this.nombre || !this.email || !this.telefono || !this.cv) {
       throw new Error("Todos los campos son obligatorios");
@@ -21,14 +21,14 @@ class Postulacion {
     return true;
   }
 
-  // Método para validar el formato del email
+  // Este método sirve para validar el formato del email
   validarEmail(email) {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
   }
 }
 
-// Clase para manejar el formulario y la interfaz de usuario
+// Esta clase sirve para manejar el formulario y la interfaz de usuario
 class FormularioPostulacion {
   constructor() {
     this.form = document.getElementById("form-postulacion");
@@ -37,12 +37,12 @@ class FormularioPostulacion {
     this.inicializarEventos();
   }
 
-  // Método para inicializar los event listeners
+  // Este método sirve para inicializar los event listeners
   inicializarEventos() {
     this.form.addEventListener("submit", (e) => this.manejarEnvio(e));
   }
 
-  // Método para manejar el envío del formulario
+  // Este método sirve para manejar el envío del formulario
   manejarEnvio(e) {
     e.preventDefault();
 
@@ -56,13 +56,13 @@ class FormularioPostulacion {
         this.form.mensaje.value.trim()
       );
 
-      // Validar la postulación
+      // Valida la postulación
       postulacion.validar();
 
-      // Guardar la postulación
+      // Guarda la postulación
       this.guardarPostulacion(postulacion);
 
-      // Mostrar mensaje de éxito y limpiar formulario
+      // Muestra el mensaje de éxito y limpia el formulario
       this.mostrarMensajeExito();
       this.form.reset();
     } catch (error) {
@@ -70,18 +70,18 @@ class FormularioPostulacion {
     }
   }
 
-  // Método para cargar las postulaciones guardadas
+  // Este método sirve para cargar las postulaciones guardadas
   cargarPostulaciones() {
     return JSON.parse(localStorage.getItem("postulaciones")) || [];
   }
 
-  // Método para guardar una nueva postulación
+  // Este método sirve para guardar una nueva postulación
   guardarPostulacion(postulacion) {
     this.postulaciones.push(postulacion);
     localStorage.setItem("postulaciones", JSON.stringify(this.postulaciones));
   }
 
-  // Método para mostrar mensaje de éxito
+  // Este método sirve para mostrar mensaje de éxito
   mostrarMensajeExito() {
     this.mensajeExito.classList.remove("oculto");
     // Ocultar el mensaje después de 3 segundos
@@ -90,7 +90,7 @@ class FormularioPostulacion {
     }, 3000);
   }
 
-  // Método para mostrar errores
+  // Este método sirve para mostrar errores
   mostrarError(mensaje) {
     // Crear elemento para mostrar el error
     const errorDiv = document.createElement("div");
@@ -100,14 +100,14 @@ class FormularioPostulacion {
     // Insertar el mensaje de error antes del formulario
     this.form.parentNode.insertBefore(errorDiv, this.form);
 
-    // Remover el mensaje después de 3 segundos
+    // Borra el mensaje después de 3 segundos
     setTimeout(() => {
       errorDiv.remove();
     }, 3000);
   }
 }
 
-// Agregar estilos para los mensajes de error
+// Este método sirve para agregar estilos para los mensajes de error
 const style = document.createElement("style");
 style.textContent = `
     .mensaje-error {
@@ -121,7 +121,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Inicializar el formulario cuando se carga la página
+// Este método sirve para inicializar el formulario cuando se carga la página
 document.addEventListener("DOMContentLoaded", () => {
   new FormularioPostulacion();
 });

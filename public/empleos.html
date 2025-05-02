@@ -36,32 +36,63 @@
       <h1>Ofertas Laborales</h1>
 
       <div class="filtros">
-        <input
-          type="text"
-          id="filtro-rubro"
-          list="rubros-sugerencias"
-          placeholder="¿Qué tipo de empleo buscas?"
-        />
-        <datalist id="rubros-sugerencias">
-          <option value="Administración"></option>
-          <option value="Atención al Cliente"></option>
-          <option value="Comercial / Ventas"></option>
-          <option value="Contabilidad / Finanzas"></option>
-          <option value="Desarrollo / Programación"></option>
-          <option value="Diseño / Multimedia"></option>
-          <option value="Educación"></option>
-          <option value="Gastronomía"></option>
-          <option value="Ingeniería"></option>
-          <option value="Legal"></option>
-          <option value="Logística / Transporte"></option>
-          <option value="Marketing / Publicidad"></option>
-          <option value="Medicina / Salud"></option>
-          <option value="Recursos Humanos"></option>
-          <option value="Secretariado"></option>
-          <option value="Servicios Generales"></option>
-          <option value="Tecnología"></option>
-          <option value="Turismo / Hotelería"></option>
-        </datalist>
+        <div class="input-with-icon">
+          <input
+            type="text"
+            id="filtro-rubro"
+            placeholder="¿Qué tipo de empleo buscas?"
+            readonly
+          />
+          <i class="fas fa-chevron-down select-trigger" id="rubro-trigger"></i>
+          <div class="hidden-select" id="rubro-select">
+            <div class="select-option" data-value="Administración">
+              Administración
+            </div>
+            <div class="select-option" data-value="Atención al Cliente">
+              Atención al Cliente
+            </div>
+            <div class="select-option" data-value="Comercial / Ventas">
+              Comercial / Ventas
+            </div>
+            <div class="select-option" data-value="Contabilidad / Finanzas">
+              Contabilidad / Finanzas
+            </div>
+            <div class="select-option" data-value="Desarrollo / Programación">
+              Desarrollo / Programación
+            </div>
+            <div class="select-option" data-value="Diseño / Multimedia">
+              Diseño / Multimedia
+            </div>
+            <div class="select-option" data-value="Educación">Educación</div>
+            <div class="select-option" data-value="Gastronomía">
+              Gastronomía
+            </div>
+            <div class="select-option" data-value="Ingeniería">Ingeniería</div>
+            <div class="select-option" data-value="Legal">Legal</div>
+            <div class="select-option" data-value="Logística / Transporte">
+              Logística / Transporte
+            </div>
+            <div class="select-option" data-value="Marketing / Publicidad">
+              Marketing / Publicidad
+            </div>
+            <div class="select-option" data-value="Medicina / Salud">
+              Medicina / Salud
+            </div>
+            <div class="select-option" data-value="Recursos Humanos">
+              Recursos Humanos
+            </div>
+            <div class="select-option" data-value="Secretariado">
+              Secretariado
+            </div>
+            <div class="select-option" data-value="Servicios Generales">
+              Servicios Generales
+            </div>
+            <div class="select-option" data-value="Tecnología">Tecnología</div>
+            <div class="select-option" data-value="Turismo / Hotelería">
+              Turismo / Hotelería
+            </div>
+          </div>
+        </div>
 
         <input type="text" id="filtro-zona" placeholder="¿En qué zona?" />
       </div>

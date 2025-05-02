@@ -6,6 +6,15 @@ const filtroZona = document.getElementById("filtro-zona");
 // Obtenemos las ofertas almacenadas en localStorage o inicializamos un array vacío si no hay ofertas
 let ofertas = JSON.parse(localStorage.getItem("ofertas")) || [];
 
+// Función para obtener los parámetros de la URL
+function obtenerParametrosURL() {
+  const params = new URLSearchParams(window.location.search);
+  return {
+    rubro: params.get("rubro") || "",
+    zona: params.get("zona") || "",
+  };
+}
+
 // Función que se encarga de mostrar las ofertas en la página
 function renderizar(ofertasFiltradas) {
   // Limpiamos el contenedor de ofertas
@@ -80,18 +89,31 @@ function renderizar(ofertasFiltradas) {
 
 // Función que se encarga de filtrar las ofertas según los criterios ingresados
 function filtrarOfertas() {
-  // Obtenemos los valores de los filtros y los convertimos a minúsculas
   const rubro = filtroRubro.value.toLowerCase();
   const zona = filtroZona.value.toLowerCase();
 
-  // Filtramos las ofertas que coincidan con ambos criterios
-  const filtradas = ofertas.filter(
-    (o) =>
-      o.rubro.toLowerCase().includes(rubro) &&
-      o.ubicacion.toLowerCase().includes(zona)
-  );
+  // Filtramos las ofertas que coincidan con los criterios
+  const filtradas = ofertas.filter((oferta) => {
+    // Si ambos campos están vacíos, mostramos todas las ofertas
+    if (!rubro && !zona) return true;
 
-  // Mostramos las ofertas filtradas
+    // Si solo hay rubro, filtramos por rubro
+    if (rubro && !zona) {
+      return oferta.rubro.toLowerCase() === rubro;
+    }
+
+    // Si solo hay zona, filtramos por zona
+    if (!rubro && zona) {
+      return oferta.ubicacion.toLowerCase().includes(zona);
+    }
+
+    // Si hay ambos criterios, deben cumplirse los dos
+    return (
+      oferta.rubro.toLowerCase() === rubro &&
+      oferta.ubicacion.toLowerCase().includes(zona)
+    );
+  });
+
   renderizar(filtradas);
 }
 
@@ -99,5 +121,15 @@ function filtrarOfertas() {
 filtroRubro.addEventListener("input", filtrarOfertas);
 filtroZona.addEventListener("input", filtrarOfertas);
 
-// Mostramos todas las ofertas al cargar la página
-renderizar(ofertas);
+// Inicialización: verificamos si hay parámetros de búsqueda
+const params = obtenerParametrosURL();
+if (params.rubro || params.zona) {
+  // Si hay parámetros, los establecemos en los campos de filtro
+  filtroRubro.value = params.rubro;
+  filtroZona.value = params.zona;
+  // Y aplicamos los filtros
+  filtrarOfertas();
+} else {
+  // Si no hay parámetros, mostramos todas las ofertas
+  renderizar(ofertas);
+}

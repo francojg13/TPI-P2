@@ -39,13 +39,31 @@
         <input
           type="text"
           id="filtro-rubro"
-          placeholder="Filtrar por rubro..."
+          list="rubros-sugerencias"
+          placeholder="¿Qué tipo de empleo buscas?"
         />
-        <input
-          type="text"
-          id="filtro-zona"
-          placeholder="Filtrar por ciudad/zona..."
-        />
+        <datalist id="rubros-sugerencias">
+          <option value="Administración"></option>
+          <option value="Atención al Cliente"></option>
+          <option value="Comercial / Ventas"></option>
+          <option value="Contabilidad / Finanzas"></option>
+          <option value="Desarrollo / Programación"></option>
+          <option value="Diseño / Multimedia"></option>
+          <option value="Educación"></option>
+          <option value="Gastronomía"></option>
+          <option value="Ingeniería"></option>
+          <option value="Legal"></option>
+          <option value="Logística / Transporte"></option>
+          <option value="Marketing / Publicidad"></option>
+          <option value="Medicina / Salud"></option>
+          <option value="Recursos Humanos"></option>
+          <option value="Secretariado"></option>
+          <option value="Servicios Generales"></option>
+          <option value="Tecnología"></option>
+          <option value="Turismo / Hotelería"></option>
+        </datalist>
+
+        <input type="text" id="filtro-zona" placeholder="¿En qué zona?" />
       </div>
 
       <div id="lista-empleos" class="empleos-lista">

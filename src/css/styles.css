@@ -1,5 +1,5 @@
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; 
 }
 
 body {
@@ -296,7 +296,7 @@ body {
 
 .search-form input {
     flex: 1;
-    min-width: 200px;
+    min-width: 270px;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -308,7 +308,7 @@ body {
     cursor: pointer;
 }
 
-/* Estilos para inputs con iconos */
+/* ESTILOS PARA LOS ICONOS */
 .input-with-icon {
     position: relative;
     display: flex;

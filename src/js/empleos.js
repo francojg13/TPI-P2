@@ -47,8 +47,7 @@ const lista = document.getElementById("lista-empleos");
 const filtroRubro = document.getElementById("filtro-rubro");
 const filtroZona = document.getElementById("filtro-zona");
 
-// Obtenemos las ofertas almacenadas en localStorage o inicializamos un array vacío si no hay ofertas
-let ofertas = JSON.parse(localStorage.getItem("ofertas")) || [];
+let ofertas = [];
 
 // Función para obtener los parámetros de la URL
 function obtenerParametrosURL() {
@@ -57,6 +56,30 @@ function obtenerParametrosURL() {
     rubro: params.get("rubro") || "",
     zona: params.get("zona") || "",
   };
+}
+
+// Función para obtener las ofertas desde el backend
+function cargarOfertas() {
+  fetch("../backend/empleos.php")
+    .then((res) => res.json())
+    .then((data) => {
+      ofertas = data;
+      aplicarFiltrosIniciales();
+    })
+    .catch(() => {
+      lista.innerHTML = "<p>Error al cargar las ofertas.</p>";
+    });
+}
+
+function aplicarFiltrosIniciales() {
+  const params = obtenerParametrosURL();
+  if (params.rubro || params.zona) {
+    filtroRubro.value = params.rubro;
+    filtroZona.value = params.zona;
+    filtrarOfertas();
+  } else {
+    renderizar(ofertas);
+  }
 }
 
 // Función que se encarga de mostrar las ofertas en la página
@@ -165,15 +188,5 @@ function filtrarOfertas() {
 filtroRubro.addEventListener("input", filtrarOfertas);
 filtroZona.addEventListener("input", filtrarOfertas);
 
-// Inicialización: verificamos si hay parámetros de búsqueda
-const params = obtenerParametrosURL();
-if (params.rubro || params.zona) {
-  // Si hay parámetros, los establecemos en los campos de filtro
-  filtroRubro.value = params.rubro;
-  filtroZona.value = params.zona;
-  // Y aplicamos los filtros
-  filtrarOfertas();
-} else {
-  // Si no hay parámetros, mostramos todas las ofertas
-  renderizar(ofertas);
-}
+// Reemplazar la inicialización final por la carga desde el backend
+cargarOfertas();

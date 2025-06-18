@@ -33,7 +33,6 @@ class FormularioPostulacion {
   constructor() {
     this.form = document.getElementById("form-postulacion");
     this.mensajeExito = document.getElementById("mensaje-exito");
-    this.postulaciones = this.cargarPostulaciones();
     this.inicializarEventos();
   }
 
@@ -59,26 +58,28 @@ class FormularioPostulacion {
       // Valida la postulación
       postulacion.validar();
 
-      // Guarda la postulación
-      this.guardarPostulacion(postulacion);
-
-      // Muestra el mensaje de éxito y limpia el formulario
-      this.mostrarMensajeExito();
-      this.form.reset();
+      // Enviar la postulación al backend
+      const formData = new FormData(this.form);
+      fetch("../backend/postulaciones.php", {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.success) {
+            // Muestra el mensaje de éxito y limpia el formulario
+            this.mostrarMensajeExito();
+            this.form.reset();
+          } else {
+            this.mostrarError(data.message || "Error al enviar la postulación");
+          }
+        })
+        .catch(() => {
+          this.mostrarError("Error de conexión con el servidor");
+        });
     } catch (error) {
       this.mostrarError(error.message);
     }
-  }
-
-  // Este método sirve para cargar las postulaciones guardadas
-  cargarPostulaciones() {
-    return JSON.parse(localStorage.getItem("postulaciones")) || [];
-  }
-
-  // Este método sirve para guardar una nueva postulación
-  guardarPostulacion(postulacion) {
-    this.postulaciones.push(postulacion);
-    localStorage.setItem("postulaciones", JSON.stringify(this.postulaciones));
   }
 
   // Este método sirve para mostrar mensaje de éxito

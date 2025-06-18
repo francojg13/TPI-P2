@@ -1,18 +1,23 @@
 <?php
+// Mostrar errores para depuración
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // backend/empleos.php
 require 'db.php';
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $titulo = trim($_POST['titulo'] ?? '');
+    $puesto = trim($_POST['puesto'] ?? '');
     $descripcion = trim($_POST['descripcion'] ?? '');
     $rubro = trim($_POST['rubro'] ?? '');
     $zona = trim($_POST['zona'] ?? '');
     // Validación básica
-    if ($titulo && $descripcion && $rubro && $zona) {
+    if ($puesto && $descripcion && $rubro && $zona) {
         $stmt = $conn->prepare('INSERT INTO empleos (titulo, descripcion, rubro, zona) VALUES (?, ?, ?, ?)');
-        $stmt->bind_param('ssss', $titulo, $descripcion, $rubro, $zona);
+        $stmt->bind_param('ssss', $puesto, $descripcion, $rubro, $zona);
         if ($stmt->execute()) {
             echo json_encode(['success' => true, 'message' => 'Empleo publicado correctamente']);
         } else {

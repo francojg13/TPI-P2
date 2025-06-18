@@ -3,16 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FamaEmpleos</title>
+    <title>Ingresar - FamaJobs</title>
     <link rel="stylesheet" href="../src/css/styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
   </head>
   <body>
     <header class="navbar">
@@ -35,7 +27,17 @@
         <a href="registro.html" class="btn-outline">Registrarse</a>
       </div>
     </header>
-
+    <main class="form-section">
+      <h1>Ingresar</h1>
+      <form id="form-login" class="form-box">
+        <label for="login-email">Email:</label>
+        <input type="email" id="login-email" required />
+        <label for="login-password">Contraseña:</label>
+        <input type="password" id="login-password" required />
+        <button type="submit">Ingresar</button>
+        <div id="login-error" class="error-message oculto"></div>
+      </form>
+    </main>
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-logo">
@@ -61,6 +63,6 @@
         </div>
       </div>
     </footer>
-    <script src="../src/js/main.js"></script>
+    <script src="../src/js/login.js"></script>
   </body>
 </html>

@@ -3,16 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FamaEmpleos</title>
+    <title>Registrarse - FamaJobs</title>
     <link rel="stylesheet" href="../src/css/styles.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
   </head>
   <body>
     <header class="navbar">
@@ -35,7 +27,24 @@
         <a href="registro.html" class="btn-outline">Registrarse</a>
       </div>
     </header>
-
+    <main class="form-section">
+      <h1>Registrarse</h1>
+      <form id="form-registro" class="form-box">
+        <label for="registro-nombre">Nombre:</label>
+        <input type="text" id="registro-nombre" required />
+        <label for="registro-email">Email:</label>
+        <input type="email" id="registro-email" required />
+        <label for="registro-password">Contraseña:</label>
+        <input type="password" id="registro-password" required />
+        <label for="registro-tipo">Tipo de usuario:</label>
+        <select id="registro-tipo" required>
+          <option value="empresa">Empresa</option>
+          <option value="candidato">Candidato</option>
+        </select>
+        <button type="submit">Registrarse</button>
+        <div id="registro-error" class="error-message oculto"></div>
+      </form>
+    </main>
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-logo">
@@ -61,6 +70,6 @@
         </div>
       </div>
     </footer>
-    <script src="../src/js/main.js"></script>
+    <script src="../src/js/registro.js"></script>
   </body>
 </html>

@@ -31,8 +31,8 @@
         <a href="contacto.html">Contacto</a>
       </nav>
       <div class="nav-actions">
-        <a href="#" class="btn-link">Ingresar</a>
-        <a href="#" class="btn-outline">Registrarse</a>
+        <a href="login.html" class="btn-link">Ingresar</a>
+        <a href="registro.html" class="btn-outline">Registrarse</a>
       </div>
     </header>
 
@@ -82,6 +82,40 @@
       </div>
     </footer>
 
+    <div id="modal-auth" class="modal-auth oculto">
+      <div class="modal-auth-content">
+        <span class="modal-auth-close" id="close-modal-auth">&times;</span>
+        <div class="modal-tabs">
+          <button id="tab-login" class="active">Ingresar</button>
+          <button id="tab-registro">Registrarse</button>
+        </div>
+        <form id="modal-login-form" class="modal-form">
+          <label for="modal-login-email">Email:</label>
+          <input type="email" id="modal-login-email" required />
+          <label for="modal-login-password">Contraseña:</label>
+          <input type="password" id="modal-login-password" required />
+          <button type="submit">Ingresar</button>
+          <div id="modal-login-error" class="error-message oculto"></div>
+        </form>
+        <form id="modal-registro-form" class="modal-form oculto">
+          <label for="modal-registro-nombre">Nombre:</label>
+          <input type="text" id="modal-registro-nombre" required />
+          <label for="modal-registro-email">Email:</label>
+          <input type="email" id="modal-registro-email" required />
+          <label for="modal-registro-password">Contraseña:</label>
+          <input type="password" id="modal-registro-password" required />
+          <label for="modal-registro-tipo">Tipo de usuario:</label>
+          <select id="modal-registro-tipo" required>
+            <option value="empresa">Empresa</option>
+            <option value="candidato">Candidato</option>
+          </select>
+          <button type="submit">Registrarse</button>
+          <div id="modal-registro-error" class="error-message oculto"></div>
+        </form>
+      </div>
+    </div>
+
     <script src="../src/js/contacto.js"></script>
+    <script src="../src/js/modal-auth.js"></script>
   </body>
 </html>

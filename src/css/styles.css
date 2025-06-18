@@ -435,3 +435,87 @@ input[list]::-webkit-calendar-picker-indicator {
     opacity: 0.8;
 }
 
+/* MODAL AUTH */
+.modal-auth {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(44, 62, 80, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-auth.oculto {
+  display: none;
+}
+.modal-auth-content {
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(44,62,80,0.15);
+  min-width: 320px;
+  max-width: 95vw;
+  position: relative;
+}
+.modal-auth-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+}
+.modal-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.modal-tabs button {
+  flex: 1;
+  padding: 0.5rem 0;
+  border: none;
+  background: #f1f1f1;
+  color: #2c3e50;
+  font-weight: 500;
+  border-radius: 6px 6px 0 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.modal-tabs button.active {
+  background: #3498db;
+  color: #fff;
+}
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.modal-form input, .modal-form select {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+.modal-form button[type="submit"] {
+  margin-top: 0.5rem;
+  background: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.7rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.modal-form button[type="submit"]:hover {
+  background: #217dbb;
+}
+.error-message {
+  color: #e74c3c;
+  font-size: 0.95rem;
+  margin-top: 0.3rem;
+}
+

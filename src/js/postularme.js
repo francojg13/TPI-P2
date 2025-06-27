@@ -122,7 +122,60 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Este método sirve para inicializar el formulario cuando se carga la página
+// Mostrar datos del empleo seleccionado arriba del formulario
+function mostrarDatosEmpleo() {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+  if (!id) return;
+  fetch("../backend/empleos.php")
+    .then((res) => res.json())
+    .then((empleos) => {
+      const empleo = empleos.find((e) => e.id == id);
+      if (empleo) {
+        const cont = document.getElementById("datos-empleo");
+        let detalles = [];
+        if (empleo.zona) detalles.push(empleo.zona);
+        if (empleo.rubro) detalles.push("Rubro: " + empleo.rubro);
+        if (empleo.tipo_contrato)
+          detalles.push("Contrato: " + empleo.tipo_contrato);
+        if (empleo.salario_min || empleo.salario_max) {
+          let salario = "Salario: ";
+          if (empleo.salario_min) salario += "$" + empleo.salario_min;
+          if (empleo.salario_max) salario += " - $" + empleo.salario_max;
+          detalles.push(salario);
+        }
+        cont.innerHTML = `
+          <div class="card-empleo" style="box-shadow:none; background: #f4f8fb; margin-bottom: 0;">
+            <div class="card-info">
+              <h2 style='margin-bottom:0.3rem;'>${empleo.titulo}</h2>
+              <p class='empresa'>${empleo.empresa}</p>
+              <p class='detalles-linea'>${detalles.join(" | ")}</p>
+              <p class='descripcion-corta' style='margin-top:0.5rem;'>${
+                empleo.descripcion
+              }</p>
+              ${
+                empleo.requisitos
+                  ? `<p class='detalle-extra'><strong>Requisitos:</strong> ${empleo.requisitos}</p>`
+                  : ""
+              }
+              ${
+                empleo.beneficios
+                  ? `<p class='detalle-extra'><strong>Beneficios:</strong> ${empleo.beneficios}</p>`
+                  : ""
+              }
+            </div>
+            <img class="card-logo" src="${
+              empleo.logo || "../assets/images/default-logo.png"
+            }" alt="Logo de ${
+          empleo.empresa
+        }" style="max-width:70px; max-height:70px; object-fit:contain;">
+          </div>
+        `;
+      }
+    });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  mostrarDatosEmpleo();
   new FormularioPostulacion();
 });

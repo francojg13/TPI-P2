@@ -16,7 +16,6 @@
       <nav class="nav-menu">
         <a href="empleos.html">Empleos</a>
         <a href="publicar.html">Publicar</a>
-        <a href="postularme.html">Postularme</a>
         <a href="cursos.html">Cursos</a>
         <a href="eventos.html">Eventos</a>
         <a href="blog.html">Blog</a>
@@ -28,20 +27,65 @@
       </div>
     </header>
     <main class="form-section">
-      <h1>Registrarse</h1>
-      <form id="form-registro" class="form-box">
-        <label for="registro-nombre">Nombre:</label>
+      <h1>Registro de Empresa</h1>
+      <form id="form-registro" class="form-box" enctype="multipart/form-data">
+        <label for="registro-nombre">Nombre de la empresa:</label>
         <input type="text" id="registro-nombre" required />
         <label for="registro-email">Email:</label>
         <input type="email" id="registro-email" required />
         <label for="registro-password">Contraseña:</label>
         <input type="password" id="registro-password" required />
-        <label for="registro-tipo">Tipo de usuario:</label>
-        <select id="registro-tipo" required>
-          <option value="empresa">Empresa</option>
-          <option value="candidato">Candidato</option>
-        </select>
-        <button type="submit">Registrarse</button>
+        <label for="registro-logo">Logo de la empresa (opcional):</label>
+        <input
+          type="file"
+          id="registro-logo"
+          accept="image/*"
+          class="input-file"
+        />
+        <label for="registro-descripcion">Descripción de la empresa:</label>
+        <textarea id="registro-descripcion" required></textarea>
+        <label for="registro-ubicacion">Ubicación:</label>
+        <input type="text" id="registro-ubicacion" required />
+        <label for="registro-telefono">Teléfono de contacto:</label>
+        <input type="tel" id="registro-telefono" required />
+        <label for="registro-sitio">Sitio web (opcional):</label>
+        <input type="url" id="registro-sitio" />
+        <label for="registro-rubro">Rubro/Sector:</label>
+        <div class="input-with-icon">
+          <select id="registro-rubro" required>
+            <option value="">Selecciona un rubro</option>
+            <option value="Administración">Administración</option>
+            <option value="Atención al Cliente">Atención al Cliente</option>
+            <option value="Comercial / Ventas">Comercial / Ventas</option>
+            <option value="Contabilidad / Finanzas">
+              Contabilidad / Finanzas
+            </option>
+            <option value="Desarrollo / Programación">
+              Desarrollo / Programación
+            </option>
+            <option value="Diseño / Multimedia">Diseño / Multimedia</option>
+            <option value="Educación">Educación</option>
+            <option value="Gastronomía">Gastronomía</option>
+            <option value="Ingeniería">Ingeniería</option>
+            <option value="Legal">Legal</option>
+            <option value="Logística / Transporte">
+              Logística / Transporte
+            </option>
+            <option value="Marketing / Publicidad">
+              Marketing / Publicidad
+            </option>
+            <option value="Medicina / Salud">Medicina / Salud</option>
+            <option value="Recursos Humanos">Recursos Humanos</option>
+            <option value="Secretariado">Secretariado</option>
+            <option value="Servicios Generales">Servicios Generales</option>
+            <option value="Tecnología">Tecnología</option>
+            <option value="Turismo / Hotelería">Turismo / Hotelería</option>
+          </select>
+          <i class="fa fa-chevron-down select-trigger"></i>
+        </div>
+        <label for="registro-persona">Persona de contacto (opcional):</label>
+        <input type="text" id="registro-persona" />
+        <button type="submit" class="btn-primary">Registrarse</button>
         <div id="registro-error" class="error-message oculto"></div>
       </form>
     </main>

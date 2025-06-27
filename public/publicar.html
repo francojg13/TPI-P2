@@ -24,7 +24,6 @@
       <nav class="nav-menu">
         <a href="empleos.html">Empleos</a>
         <a href="publicar.html">Publicar</a>
-        <a href="postularme.html">Postularme</a>
         <a href="cursos.html">Cursos</a>
         <a href="eventos.html">Eventos</a>
         <a href="blog.html">Blog</a>
@@ -33,17 +32,38 @@
       <div class="nav-actions">
         <a href="login.html" class="btn-link">Ingresar</a>
         <a href="registro.html" class="btn-outline">Registrarse</a>
+        <button
+          id="btn-logout"
+          class="btn-primary"
+          style="display: none; margin-left: 10px"
+        >
+          Cerrar sesión
+        </button>
       </div>
     </header>
 
     <main class="form-section">
       <h1>Publicar nueva oferta laboral</h1>
+      <div
+        id="bloqueo-publicar"
+        class="oculto"
+        style="
+          background: #fff3cd;
+          color: #856404;
+          padding: 1.2rem 1.5rem;
+          border-radius: 10px;
+          margin-bottom: 1.5rem;
+        "
+      >
+        Debes <a href="login.html">iniciar sesión</a> como empresa para publicar
+        una oferta laboral.
+      </div>
       <form id="form-publicar" class="form-box" enctype="multipart/form-data">
         <label for="empresa">Nombre de la empresa:</label>
         <input type="text" id="empresa" required />
 
-        <label for="puesto">Puesto o título del empleo:</label>
-        <input type="text" id="puesto" required />
+        <label for="titulo">Título del empleo:</label>
+        <input type="text" id="titulo" required />
 
         <label for="rubro">Rubro o sector:</label>
         <div class="input-with-icon">
@@ -105,14 +125,59 @@
           </div>
         </div>
 
-        <label for="ubicacion">Ciudad / Zona:</label>
-        <input type="text" id="ubicacion" required />
+        <label for="zona">Ciudad / Zona:</label>
+        <input type="text" id="zona" required />
 
         <label for="descripcion">Descripción del puesto:</label>
         <textarea id="descripcion" rows="5" required></textarea>
 
         <label for="fecha">Fecha de publicación:</label>
         <input type="date" id="fecha" required />
+
+        <label for="tipo_contrato">Tipo de contrato:</label>
+        <select id="tipo_contrato" required>
+          <option value="Full-time">Full-time</option>
+          <option value="Part-time">Part-time</option>
+          <option value="Temporal">Temporal</option>
+          <option value="Prácticas">Prácticas</option>
+          <option value="Remoto">Remoto</option>
+          <option value="Otro">Otro</option>
+        </select>
+
+        <label for="salario_min">Salario mínimo (opcional):</label>
+        <input
+          type="number"
+          id="salario_min"
+          min="0"
+          step="0.01"
+          placeholder="Ej: 50000"
+        />
+
+        <label for="salario_max">Salario máximo (opcional):</label>
+        <input
+          type="number"
+          id="salario_max"
+          min="0"
+          step="0.01"
+          placeholder="Ej: 80000"
+        />
+
+        <label for="fecha_expiracion">Fecha de expiración (opcional):</label>
+        <input type="date" id="fecha_expiracion" />
+
+        <label for="requisitos">Requisitos (opcional):</label>
+        <textarea
+          id="requisitos"
+          rows="3"
+          placeholder="Ej: Experiencia, habilidades, etc."
+        ></textarea>
+
+        <label for="beneficios">Beneficios (opcional):</label>
+        <textarea
+          id="beneficios"
+          rows="3"
+          placeholder="Ej: Obra social, home office, etc."
+        ></textarea>
 
         <label for="logo">Logo de la empresa (opcional):</label>
         <input type="file" id="logo" accept="image/*" />

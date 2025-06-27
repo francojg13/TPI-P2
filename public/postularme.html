@@ -24,7 +24,6 @@
       <nav class="nav-menu">
         <a href="empleos.html">Empleos</a>
         <a href="publicar.html">Publicar</a>
-        <a href="postularme.html">Postularme</a>
         <a href="cursos.html">Cursos</a>
         <a href="eventos.html">Eventos</a>
         <a href="blog.html">Blog</a>
@@ -38,21 +37,32 @@
 
     <main class="form-section">
       <h1>Postularme a una oferta</h1>
+      <div
+        id="datos-empleo"
+        class="datos-empleo"
+        style="margin-bottom: 1.5rem"
+      ></div>
       <form id="form-postulacion" class="form-box">
         <label for="nombre">Nombre completo:</label>
-        <input type="text" id="nombre" required />
+        <input type="text" id="nombre" name="nombre" required />
 
         <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" required />
+        <input type="email" id="email" name="email" required />
 
         <label for="telefono">Teléfono:</label>
-        <input type="text" id="telefono" required />
+        <input type="text" id="telefono" name="telefono" required />
 
         <label for="cv">Link a tu CV (Google Drive, PDF, etc):</label>
-        <input type="url" id="cv" placeholder="https://..." required />
+        <input
+          type="url"
+          id="cv"
+          name="cv"
+          placeholder="https://..."
+          required
+        />
 
         <label for="mensaje">Mensaje adicional:</label>
-        <textarea id="mensaje" rows="4"></textarea>
+        <textarea id="mensaje" name="mensaje" rows="4"></textarea>
 
         <button type="submit" class="btn-primary">Enviar Postulación</button>
       </form>

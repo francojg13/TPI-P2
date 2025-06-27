@@ -1,5 +1,4 @@
 <?php
-// backend/postulaciones.php
 require 'db.php';
 header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json');
@@ -29,6 +28,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     exit;
 }
-
-// (Opcional) Puedes agregar aquí un método GET para listar postulaciones si lo necesitas
 ?>

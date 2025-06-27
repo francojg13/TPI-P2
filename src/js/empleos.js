@@ -30,6 +30,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  // Agregar opción "Todos" al filtro de rubro
+  const todosOption = document.createElement("div");
+  todosOption.className = "select-option";
+  todosOption.setAttribute("data-value", "");
+  todosOption.textContent = "Todos";
+  rubroSelect.insertBefore(todosOption, rubroSelect.firstChild);
+  todosOption.addEventListener("click", function () {
+    rubroInput.value = "";
+    toggleSelect();
+    filtrarOfertas();
+  });
+
   // Cerrar el selector cuando se hace clic fuera
   document.addEventListener("click", function () {
     rubroSelect.classList.remove("active");
@@ -105,17 +117,31 @@ function renderizar(ofertasFiltradas) {
 
     // Creamos y configuramos el título del puesto
     const titulo = document.createElement("h2");
-    titulo.innerText = oferta.puesto;
+    titulo.innerText = oferta.titulo || "";
 
     // Creamos y configuramos el nombre de la empresa
     const empresa = document.createElement("p");
     empresa.className = "empresa";
-    empresa.innerText = oferta.empresa;
+    empresa.innerText = oferta.empresa || "";
 
-    // Creamos y configuramos la línea de detalles (ubicación, rubro y fecha)
+    // Creamos y configuramos la línea de detalles (zona, rubro y fecha)
     const detallesLinea = document.createElement("p");
     detallesLinea.className = "detalles-linea";
-    detallesLinea.innerText = `${oferta.ubicacion} | Rubro: ${oferta.rubro} | Publicado: ${oferta.fecha}`;
+    // Línea de detalles extendida
+    let detalles = [];
+    if (oferta.zona) detalles.push(oferta.zona);
+    if (oferta.rubro) detalles.push("Rubro: " + oferta.rubro);
+    if (oferta.tipo_contrato)
+      detalles.push("Contrato: " + oferta.tipo_contrato);
+    if (oferta.salario_min || oferta.salario_max) {
+      let salario = "Salario: ";
+      if (oferta.salario_min) salario += "$" + oferta.salario_min;
+      if (oferta.salario_max) salario += " - $" + oferta.salario_max;
+      detalles.push(salario);
+    }
+    if (oferta.fecha_publicacion)
+      detalles.push("Publicado: " + oferta.fecha_publicacion.split(" ")[0]);
+    detallesLinea.innerText = detalles.join(" | ");
 
     // Creamos y configuramos la descripción del puesto
     const descripcion = document.createElement("p");
@@ -126,11 +152,11 @@ function renderizar(ofertasFiltradas) {
         ? oferta.descripcion.substring(0, 160) + "..."
         : oferta.descripcion;
 
-    // Creamos y configuramos el botón para ver más detalles
+    // Creamos y configuramos el botón para postularse
     const boton = document.createElement("a");
-    boton.href = `detalle.html?id=${oferta.id}`;
+    boton.href = `postularme.html?id=${oferta.id}`;
     boton.className = "btn-primary boton-derecha";
-    boton.innerText = "Ver Detalle";
+    boton.innerText = "Postularme";
 
     // Creamos y configuramos el logo de la empresa
     const logo = document.createElement("img");
@@ -145,6 +171,20 @@ function renderizar(ofertasFiltradas) {
     info.appendChild(detallesLinea);
     info.appendChild(descripcion);
     info.appendChild(boton);
+
+    // Mostrar requisitos y beneficios si existen
+    if (oferta.requisitos) {
+      const req = document.createElement("p");
+      req.className = "detalle-extra";
+      req.innerHTML = "<strong>Requisitos:</strong> " + oferta.requisitos;
+      info.appendChild(req);
+    }
+    if (oferta.beneficios) {
+      const ben = document.createElement("p");
+      ben.className = "detalle-extra";
+      ben.innerHTML = "<strong>Beneficios:</strong> " + oferta.beneficios;
+      info.appendChild(ben);
+    }
 
     // Agregamos la información y el logo a la tarjeta
     card.appendChild(info);
@@ -171,13 +211,15 @@ function filtrarOfertas() {
 
     // Si solo hay zona, filtramos por zona
     if (!rubro && zona) {
-      return oferta.ubicacion.toLowerCase().includes(zona);
+      return oferta.zona && oferta.zona.toLowerCase().includes(zona);
     }
 
     // Si hay ambos criterios, deben cumplirse los dos
     return (
+      oferta.rubro &&
       oferta.rubro.toLowerCase() === rubro &&
-      oferta.ubicacion.toLowerCase().includes(zona)
+      oferta.zona &&
+      oferta.zona.toLowerCase().includes(zona)
     );
   });
 
@@ -190,3 +232,48 @@ filtroZona.addEventListener("input", filtrarOfertas);
 
 // Reemplazar la inicialización final por la carga desde el backend
 cargarOfertas();
+
+// --- Lógica de visibilidad de sesión para navbar ---
+// Cambia el estilo del botón de logout a btn-primary si existe
+const btnLogout = document.getElementById("btn-logout");
+if (btnLogout) {
+  btnLogout.classList.remove("btn-outline");
+  btnLogout.classList.add("btn-primary");
+}
+// Mostrar u ocultar el botón de logout y los de login/registro según sesión
+fetch("../backend/login.php", { method: "POST" })
+  .then((res) => res.json())
+  .then((data) => {
+    if (data.success && data.tipo_usuario === "empresa") {
+      if (btnLogout) btnLogout.style.display = "inline-block";
+      document.querySelectorAll(".nav-actions a").forEach((a) => {
+        if (
+          a.href &&
+          (a.href.includes("login.html") || a.href.includes("registro.html"))
+        ) {
+          a.style.display = "none";
+        }
+      });
+    } else {
+      if (btnLogout) btnLogout.style.display = "none";
+      document.querySelectorAll(".nav-actions a").forEach((a) => {
+        if (
+          a.href &&
+          (a.href.includes("login.html") || a.href.includes("registro.html"))
+        ) {
+          a.style.display = "";
+        }
+      });
+    }
+  })
+  .catch(() => {
+    if (btnLogout) btnLogout.style.display = "none";
+    document.querySelectorAll(".nav-actions a").forEach((a) => {
+      if (
+        a.href &&
+        (a.href.includes("login.html") || a.href.includes("registro.html"))
+      ) {
+        a.style.display = "";
+      }
+    });
+  });

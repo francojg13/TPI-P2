@@ -1,5 +1,4 @@
 <?php
-// Utilidades de autenticación para empresas
 session_start();
 
 function empresa_autenticada() {
